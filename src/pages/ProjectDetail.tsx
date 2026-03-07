@@ -135,7 +135,7 @@ export default function ProjectDetail() {
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              className="overflow-hidden rounded-2xl shadow-lg border border-gray-100 dark:border-gray-800"
+              className="w-3/4 mx-auto overflow-hidden rounded-2xl shadow-lg border border-gray-100 dark:border-gray-800"
             >
               <img src={heatmapImg} alt="Heatmap de Correlação" className="w-full h-auto" />
               <p className="mt-2 text-center text-xs text-gray-400 italic">Análise de Correlação: Variáveis de Investimento vs. Vendas</p>
@@ -148,7 +148,7 @@ export default function ProjectDetail() {
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              className="order-2 overflow-hidden rounded-2xl shadow-lg border border-gray-100 dark:border-gray-800 lg:order-1"
+              className="order-2 overflow-hidden rounded-2xl shadow-lg border border-gray-100 dark:border-gray-800 lg:order-1 scale-115 origin-center"
             >
               <img src={regplotImg} alt="Regressão Linear" className="w-full h-auto" />
               <p className="mt-2 text-center text-xs text-gray-400 italic">Regplot: Linha de Tendência e Dispersão dos Dados</p>
@@ -193,7 +193,7 @@ export default function ProjectDetail() {
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                className="overflow-hidden rounded-2xl shadow-md border border-gray-100 dark:border-gray-800"
+                className="w-5/6 mx-auto overflow-hidden rounded-2xl shadow-md border border-gray-100 dark:border-gray-800"
               >
                 <img src={modelPerfImg} alt="Performance do Modelo" className="w-full h-auto" />
               </motion.div>
@@ -202,7 +202,7 @@ export default function ProjectDetail() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.2 }}
-                className="overflow-hidden rounded-2xl shadow-md border border-gray-100 dark:border-gray-800"
+                className="w-5/6 mx-auto overflow-hidden rounded-2xl shadow-md border border-gray-100 dark:border-gray-800"
               >
                 <img src={impactoImg} alt="Importância das Variáveis" className="w-full h-auto" />
               </motion.div>
@@ -215,7 +215,7 @@ export default function ProjectDetail() {
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              className="order-2 overflow-hidden rounded-2xl shadow-lg border border-gray-100 dark:border-gray-800 lg:order-1"
+              className="order-2 w-3/4 mx-auto overflow-hidden rounded-2xl shadow-lg border border-gray-100 dark:border-gray-800 lg:order-1"
             >
               <img src={whatifImg} alt="Análise What-If" className="w-full h-auto" />
               <p className="mt-2 text-center text-xs text-gray-400 italic">Simulação: Previsão de Vendas em Cenários de Investimento</p>
