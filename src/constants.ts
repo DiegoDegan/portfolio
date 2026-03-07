@@ -1,4 +1,6 @@
 import { Project, SocialLinks } from './types';
+import cardmmm from './images/cardmmm.png';
+import construcao from './images/construcao.jpg';
 
 export const SOCIAL_LINKS: SocialLinks = {
   github: 'Https://github.com/DiegoDegan',
@@ -14,7 +16,7 @@ export const PROJECTS: Project[] = [
     description: 'Análise de impacto de investimentos em mídia tradicional (TV, Rádio e Jornal) no volume de vendas.',
     longDescription: 'Este projeto utiliza Modelagem de Mix de Marketing (Marketing Mix Modeling - MMM) para quantificar a eficácia de diferentes canais de marketing. Focado em mídias offline como TV, Rádio e Jornal, o modelo ajuda a entender o ROI de cada canal e a otimizar a alocação de orçamento para maximizar o retorno sobre o investimento.\n\nUtilizei técnicas de regressão multivariada e análise de séries temporais para isolar o efeito de cada mídia, considerando sazonalidade e fatores externos de mercado. O resultado permitiu uma redistribuição estratégica de verba, aumentando a eficiência das campanhas em 12% sem acréscimo de custo.',
     tags: ['Python', 'Estatística', 'Marketing Analytics', 'Regressão'],
-    imageUrl: 'https://picsum.photos/seed/vintage-media/800/600',
+    imageUrl: cardmmm,
     githubUrl: 'https://github.com/DiegoDegan/MMM-Otimizacao-Investimento-Midia',
     demoUrl: 'https://colab.research.google.com/drive/19Iv3WDvVDgt5YX_j4AhFCCG5tW5SjFnR?usp=sharing',
     date: 'Mar 2024',
@@ -25,7 +27,7 @@ export const PROJECTS: Project[] = [
     description: 'Este projeto está sendo desenvolvido e em breve estará disponível.',
     longDescription: 'Em breve trarei detalhes sobre este novo projeto de Ciência de Dados. Fique atento!',
     tags: ['Em breve'],
-    imageUrl: 'https://picsum.photos/seed/construction/800/600',
+    imageUrl: construcao,
     githubUrl: '',
     date: '-',
   },
@@ -35,17 +37,7 @@ export const PROJECTS: Project[] = [
     description: 'Este projeto está sendo desenvolvido e em breve estará disponível.',
     longDescription: 'Em breve trarei detalhes sobre este novo projeto de Ciência de Dados. Fique atento!',
     tags: ['Em breve'],
-    imageUrl: 'https://picsum.photos/seed/building/800/600',
-    githubUrl: '',
-    date: '-',
-  },
-  {
-    id: 'em-construcao-3',
-    title: 'EM CONSTRUÇÃO',
-    description: 'Este projeto está sendo desenvolvido e em breve estará disponível.',
-    longDescription: 'Em breve trarei detalhes sobre este novo projeto de Ciência de Dados. Fique atento!',
-    tags: ['Em breve'],
-    imageUrl: 'https://picsum.photos/seed/work/800/600',
+    imageUrl: construcao,
     githubUrl: '',
     date: '-',
   },

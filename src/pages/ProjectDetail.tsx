@@ -2,21 +2,26 @@ import React, { useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { PROJECTS } from '../constants';
 import { motion, AnimatePresence } from 'motion/react';
-import { 
-  ArrowLeft, 
-  Github, 
-  ExternalLink, 
-  Calendar, 
-  Tag, 
-  TrendingUp, 
-  Zap, 
-  DollarSign, 
-  ChevronDown, 
+import {
+  ArrowLeft,
+  Github,
+  ExternalLink,
+  Calendar,
+  Tag,
+  TrendingUp,
+  Zap,
+  DollarSign,
+  ChevronDown,
   ChevronUp,
   Target,
   Lightbulb,
   BarChart3
 } from 'lucide-react';
+import heatmapImg from '../images/heatmap.png';
+import regplotImg from '../images/regplot.png';
+import modelPerfImg from '../images/model_performance.png';
+import impactoImg from '../images/impacto.png';
+import whatifImg from '../images/whatif.png';
 
 export default function ProjectDetail() {
   const { id } = useParams();
@@ -53,7 +58,7 @@ export default function ProjectDetail() {
         </motion.button>
 
         {/* 1. Hero Section */}
-        <motion.section 
+        <motion.section
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           className="mb-16 text-center lg:text-left"
@@ -73,7 +78,7 @@ export default function ProjectDetail() {
 
         {/* 2. Results Dashboard (Bento Grid) */}
         <section className="mb-24 grid gap-6 md:grid-cols-3">
-          <motion.div 
+          <motion.div
             whileHover={{ y: -5 }}
             className="flex flex-col items-center justify-center rounded-3xl border border-gray-800 bg-gray-900 p-8 text-center"
           >
@@ -84,7 +89,7 @@ export default function ProjectDetail() {
             <div className="text-sm font-medium text-emerald-400/60">Crescimento Estimado</div>
           </motion.div>
 
-          <motion.div 
+          <motion.div
             whileHover={{ y: -5 }}
             className="flex flex-col items-center justify-center rounded-3xl border border-gray-800 bg-gray-900 p-8 text-center"
           >
@@ -95,7 +100,7 @@ export default function ProjectDetail() {
             <div className="text-sm font-medium text-blue-400/60">R² Score (Precisão)</div>
           </motion.div>
 
-          <motion.div 
+          <motion.div
             whileHover={{ y: -5 }}
             className="flex flex-col items-center justify-center rounded-3xl border border-gray-800 bg-gray-900 p-8 text-center"
           >
@@ -111,7 +116,7 @@ export default function ProjectDetail() {
         <div className="space-y-32">
           {/* O Problema */}
           <section className="grid items-center gap-12 lg:grid-cols-2">
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
@@ -121,35 +126,34 @@ export default function ProjectDetail() {
                 <h2 className="text-2xl font-bold">O Problema</h2>
               </div>
               <p className="text-lg leading-relaxed text-gray-600 dark:text-gray-400">
-                A análise inicial revelou uma ineficiência crítica no canal <strong>"Jornal"</strong>. 
-                Apesar de um investimento considerável, a correlação com o volume de vendas era quase nula, 
-                indicando que o budget estava sendo desperdiçado em um canal com baixo alcance e conversão 
-                para o público-alvo atual.
+                A análise inicial revelou uma ineficiência crítica no canal <strong>"Newspaper"</strong>.
+                Ao analisar o heatmap de correlação, percebemos que o investimento neste canal não refletia
+                um aumento proporcional nas vendas, indicando um alto custo de aquisição e baixo retorno real.
               </p>
             </motion.div>
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              className="overflow-hidden rounded-2xl shadow-lg"
+              className="overflow-hidden rounded-2xl shadow-lg border border-gray-100 dark:border-gray-800"
             >
-              <img src="https://picsum.photos/seed/heatmap/800/600" alt="Heatmap de Correlação" className="w-full" referrerPolicy="no-referrer" />
-              <p className="mt-2 text-center text-xs text-gray-400 italic">Heatmap de Correlação entre Investimento e Vendas</p>
+              <img src={heatmapImg} alt="Heatmap de Correlação" className="w-full h-auto" />
+              <p className="mt-2 text-center text-xs text-gray-400 italic">Análise de Correlação: Variáveis de Investimento vs. Vendas</p>
             </motion.div>
           </section>
 
           {/* A Solução */}
           <section className="grid items-center gap-12 lg:grid-cols-2">
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              className="order-2 overflow-hidden rounded-2xl shadow-lg lg:order-1"
+              className="order-2 overflow-hidden rounded-2xl shadow-lg border border-gray-100 dark:border-gray-800 lg:order-1"
             >
-              <img src="https://picsum.photos/seed/prediction/800/600" alt="Real vs Predito" className="w-full" referrerPolicy="no-referrer" />
-              <p className="mt-2 text-center text-xs text-gray-400 italic">Gráfico de Performance: Real vs. Predito</p>
+              <img src={regplotImg} alt="Regressão Linear" className="w-full h-auto" />
+              <p className="mt-2 text-center text-xs text-gray-400 italic">Regplot: Linha de Tendência e Dispersão dos Dados</p>
             </motion.div>
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
@@ -160,39 +164,77 @@ export default function ProjectDetail() {
                 <h2 className="text-2xl font-bold">A Solução</h2>
               </div>
               <p className="text-lg leading-relaxed text-gray-600 dark:text-gray-400">
-                Implementamos um modelo de <strong>Regressão Linear Múltipla</strong> para isolar o impacto 
-                de cada canal. O modelo foi treinado para considerar não apenas o investimento, mas também 
-                sazonalidades e feriados, alcançando uma precisão (R²) de 0.93, o que nos deu confiança 
-                estatística para as recomendações.
+                Utilizamos o <strong>Regplot</strong> para visualizar a força da relação linear entre cada canal e as vendas.
+                Isso confirmou estatisticamente quais mídias eram mais elásticas e quais estavam saturadas.
+                A modelagem permitiu uma visão clara de onde cada real investido trazia o maior retorno marginal.
               </p>
             </motion.div>
           </section>
 
-          {/* A Recomendação */}
+          {/* Performance do Modelo */}
           <section className="grid items-center gap-12 lg:grid-cols-2">
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
+            >
+              <div className="mb-4 flex items-center gap-2 text-brand-dark dark:text-white">
+                <Zap size={24} />
+                <h2 className="text-2xl font-bold">Performance & Impacto</h2>
+              </div>
+              <p className="text-lg leading-relaxed text-gray-600 dark:text-gray-400">
+                O modelo alcançou uma precisão excelente, validada pela métrica <strong>R² de 0.93</strong>.
+                A análise de importância das features (Impacto) mostrou que a TV e o Rádio eram os principais drivers
+                de conversão, enquanto o Jornal tinha um peso quase irrelevante na decisão de compra do cliente.
+              </p>
+            </motion.div>
+            <div className="grid gap-4">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                className="overflow-hidden rounded-2xl shadow-md border border-gray-100 dark:border-gray-800"
+              >
+                <img src={modelPerfImg} alt="Performance do Modelo" className="w-full h-auto" />
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2 }}
+                className="overflow-hidden rounded-2xl shadow-md border border-gray-100 dark:border-gray-800"
+              >
+                <img src={impactoImg} alt="Importância das Variáveis" className="w-full h-auto" />
+              </motion.div>
+            </div>
+          </section>
+
+          {/* A Recomendação */}
+          <section className="grid items-center gap-12 lg:grid-cols-2">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              className="order-2 overflow-hidden rounded-2xl shadow-lg border border-gray-100 dark:border-gray-800 lg:order-1"
+            >
+              <img src={whatifImg} alt="Análise What-If" className="w-full h-auto" />
+              <p className="mt-2 text-center text-xs text-gray-400 italic">Simulação: Previsão de Vendas em Cenários de Investimento</p>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="order-1 lg:order-2"
             >
               <div className="mb-4 flex items-center gap-2 text-brand-dark dark:text-white">
                 <BarChart3 size={24} />
                 <h2 className="text-2xl font-bold">A Recomendação</h2>
               </div>
               <p className="text-lg leading-relaxed text-gray-600 dark:text-gray-400">
-                Através de um cenário <strong>"What-if"</strong>, demonstramos que ao zerar o investimento 
-                em Jornal e redistribuí-lo entre TV e Rádio (canais com maior elasticidade), a empresa 
-                poderia projetar um incremento de faturamento sem gastar um centavo a mais em marketing.
+                A aplicação da técnica <strong>"What-if"</strong> permitiu simular diferentes cenários.
+                A recomendação final foi zerar o investimento em Jornal e realocá-lo proporcionalmente
+                entre TV e Rádio, o que projetou um faturamento anual recorde sem necessidade de aporte extra.
               </p>
-            </motion.div>
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              className="overflow-hidden rounded-2xl shadow-lg"
-            >
-              <img src="https://picsum.photos/seed/barchart/800/600" alt="Cenário Atual vs Otimizado" className="w-full" referrerPolicy="no-referrer" />
-              <p className="mt-2 text-center text-xs text-gray-400 italic">Comparativo: Cenário Atual vs. Otimizado</p>
             </motion.div>
           </section>
         </div>
@@ -202,7 +244,7 @@ export default function ProjectDetail() {
           <h2 className="mb-8 text-center text-3xl font-bold">Detalhes Técnicos</h2>
           <div className="mx-auto max-w-3xl space-y-4">
             <div className="overflow-hidden rounded-2xl border border-gray-800 bg-gray-900">
-              <button 
+              <button
                 onClick={() => setIsAccordionOpen(prev => ({ ...prev, stack: !prev.stack }))}
                 className="flex w-full items-center justify-between p-6 text-left font-bold text-white"
               >
@@ -211,7 +253,7 @@ export default function ProjectDetail() {
               </button>
               <AnimatePresence>
                 {isAccordionOpen.stack && (
-                  <motion.div 
+                  <motion.div
                     initial={{ height: 0 }}
                     animate={{ height: 'auto' }}
                     exit={{ height: 0 }}
@@ -230,7 +272,7 @@ export default function ProjectDetail() {
             </div>
 
             <div className="overflow-hidden rounded-2xl border border-gray-800 bg-gray-900">
-              <button 
+              <button
                 onClick={() => setIsAccordionOpen(prev => ({ ...prev, metodologia: !prev.metodologia }))}
                 className="flex w-full items-center justify-between p-6 text-left font-bold text-white"
               >
@@ -239,7 +281,7 @@ export default function ProjectDetail() {
               </button>
               <AnimatePresence>
                 {isAccordionOpen.metodologia && (
-                  <motion.div 
+                  <motion.div
                     initial={{ height: 0 }}
                     animate={{ height: 'auto' }}
                     exit={{ height: 0 }}
@@ -265,16 +307,16 @@ export default function ProjectDetail() {
         <section className="mt-24 rounded-3xl bg-gray-900 p-12 text-center text-white dark:bg-white dark:text-gray-900">
           <h2 className="mb-8 text-3xl font-bold">Explore o Código</h2>
           <div className="flex flex-wrap justify-center gap-4">
-            <a 
-              href={project.githubUrl} 
-              target="_blank" 
-              rel="noopener noreferrer" 
+            <a
+              href={project.githubUrl}
+              target="_blank"
+              rel="noopener noreferrer"
               className="flex items-center gap-2 rounded-full bg-white px-8 py-4 font-bold text-gray-900 transition-transform hover:scale-105 dark:bg-gray-900 dark:text-white"
             >
               <Github size={20} /> Ver Repositório
             </a>
-            <a 
-              href={project.demoUrl || "#"} 
+            <a
+              href={project.demoUrl || "#"}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 rounded-full border border-white/20 px-8 py-4 font-bold transition-transform hover:scale-105 dark:border-gray-900/20"
@@ -288,8 +330,8 @@ export default function ProjectDetail() {
         <section className="mt-24 border-t border-gray-100 pt-16 dark:border-gray-800">
           <div className="mx-auto max-w-3xl text-center">
             <p className="mb-6 text-2xl font-serif italic text-gray-700 dark:text-gray-300">
-              "Como especialista com 15 anos em operações, entendo que dados sem ação são apenas números. 
-              Este modelo foi construído não apenas para prever vendas, mas para servir como uma ferramenta 
+              "Como especialista com 15 anos em operações, entendo que dados sem ação são apenas números.
+              Este modelo foi construído não apenas para prever vendas, mas para servir como uma ferramenta
               de decisão para diretores de marketing que precisam justificar cada real investido."
             </p>
             <div className="font-bold">— Diego Degan</div>
@@ -368,7 +410,7 @@ export default function ProjectDetail() {
           <p className="text-gray-600 dark:text-gray-400 leading-relaxed whitespace-pre-line">
             {project.longDescription}
           </p>
-          
+
           <h3 className="text-xl font-bold mt-8 mb-4">Tecnologias Utilizadas</h3>
           <div className="flex flex-wrap gap-2">
             {project.tags.map((tag) => (

@@ -4,6 +4,7 @@ import { PROJECTS, SOCIAL_LINKS } from '../constants';
 import ProjectCard from '../components/ProjectCard';
 import { ArrowRight, Database, LineChart, BrainCircuit } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import homeImg from '../images/home.png';
 
 export default function Home() {
   return (
@@ -21,8 +22,8 @@ export default function Home() {
                 Olá, eu sou um <span className="text-gray-500 italic">Profissional Full Stack em Dados</span>, focado em resultados.
               </h1>
               <p className="mb-8 text-lg text-gray-600 dark:text-gray-400">
-                Transformo dados complexos em insights acionáveis e modelos preditivos de alto impacto. 
-                Com experiência em Machine Learning, DataViz e Análise Estatística, com o objetivo de ajudar empresas a tomarem 
+                Transformo dados complexos em insights acionáveis e modelos preditivos de alto impacto.
+                Com experiência em Machine Learning, DataViz e Análise Estatística, com o objetivo de ajudar empresas a tomarem
                 decisões baseadas em evidências.
               </p>
               <div className="flex flex-wrap gap-4">
@@ -33,12 +34,6 @@ export default function Home() {
                   Ver Projetos
                   <ArrowRight size={18} className="ml-2" />
                 </Link>
-                <a
-                  href="#contato"
-                  className="inline-flex items-center rounded-lg border border-gray-300 px-6 py-3 text-sm font-semibold transition-colors hover:bg-gray-100 dark:border-gray-700 dark:hover:bg-gray-800"
-                >
-                  Entrar em Contato
-                </a>
               </div>
             </motion.div>
             <motion.div
@@ -48,7 +43,7 @@ export default function Home() {
               className="relative aspect-square overflow-hidden rounded-2xl shadow-2xl"
             >
               <img
-                src="https://picsum.photos/seed/data/800/800"
+                src={homeImg}
                 alt="Data Science Visualization"
                 className="h-full w-full object-cover"
                 referrerPolicy="no-referrer"
@@ -134,31 +129,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section id="contato" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="rounded-3xl bg-brand-dark p-12 text-center text-white dark:bg-white dark:text-brand-dark">
-          <h2 className="mb-6 text-4xl font-bold">Vamos trabalhar juntos?</h2>
-          <p className="mx-auto mb-10 max-w-2xl text-lg text-gray-400 dark:text-gray-600">
-            Estou sempre aberto a novos desafios e colaborações em projetos de Ciência de Dados e Machine Learning.
-          </p>
-          <div className="flex flex-wrap justify-center gap-6">
-            <a
-              href={`mailto:${SOCIAL_LINKS.email}`}
-              className="inline-flex items-center rounded-xl bg-white px-8 py-4 text-sm font-bold text-brand-dark transition-transform hover:scale-105 dark:bg-brand-dark dark:text-white"
-            >
-              Enviar Email
-            </a>
-            <a
-              href={SOCIAL_LINKS.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center rounded-xl border border-white/20 px-8 py-4 text-sm font-bold transition-transform hover:scale-105 dark:border-brand-dark/20"
-            >
-              LinkedIn
-            </a>
-          </div>
-        </div>
-      </section>
+
     </div>
   );
 }
