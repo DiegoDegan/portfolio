@@ -437,6 +437,29 @@ export default function ProjectDetail() {
               title="Dashboard de Salários Dados 2026"
             ></iframe>
           </div>
+
+          {/* Call to Action */}
+          <section className="mt-24 rounded-3xl bg-gray-900 p-12 text-center text-white dark:bg-white dark:text-gray-900">
+            <h2 className="mb-8 text-3xl font-bold">Explore o Código</h2>
+            <div className="flex flex-wrap justify-center gap-4">
+              <a
+                href="https://github.com/DiegoDegan/Imersao-Dados-Alura-2026"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 rounded-full bg-white px-8 py-4 font-bold text-gray-900 transition-transform hover:scale-105 dark:bg-gray-900 dark:text-white"
+              >
+                <Github size={20} /> Ver Repositório
+              </a>
+              <a
+                href="https://colab.research.google.com/drive/1nmiiYRv4dFgmedJZYdNXAhEMjKrO-act?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 rounded-full border border-white/20 px-8 py-4 font-bold transition-transform hover:scale-105 dark:border-gray-900/20"
+              >
+                <ExternalLink size={20} /> Abrir no Google Colab
+              </a>
+            </div>
+          </section>
         </motion.div>
       </div>
     );
