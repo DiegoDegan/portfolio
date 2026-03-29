@@ -43,6 +43,7 @@ export default function ProjectDetail() {
   }
 
   const isMMM = id === 'marketing-mix-modeling';
+  const isStreamlit = id === 'analise-de-salarios-streamlit';
 
   if (isMMM) {
     return (
@@ -364,6 +365,79 @@ export default function ProjectDetail() {
             <div className="font-bold">— Diego Degan</div>
           </div>
         </section>
+      </div>
+    );
+  }
+
+  if (isStreamlit) {
+    return (
+      <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8">
+        <motion.button
+          initial={{ opacity: 0, x: -10 }}
+          animate={{ opacity: 1, x: 0 }}
+          onClick={() => navigate(-1)}
+          className="mb-8 flex items-center text-sm font-medium text-gray-600 transition-colors hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
+        >
+          <ArrowLeft size={16} className="mr-1" />
+          Voltar
+        </motion.button>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="prose prose-lg max-w-none dark:prose-invert"
+        >
+          <h1 className="mb-10 text-4xl font-bold leading-tight md:text-5xl text-gray-900 dark:text-white">
+            Análise de Salários na Área de Dados com Streamlit
+          </h1>
+
+          <h2 className="text-2xl font-bold mt-12 mb-4 text-gray-900 dark:text-white">1. Visão Geral do Projeto</h2>
+          <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-8">
+            Este projeto consiste no desenvolvimento de um dashboard interativo criado durante a Imersão Dados da Alura (2026). O objetivo é explorar e analisar dados salariais globais na área de tecnologia, focando em funções de dados para entender tendências de remuneração baseadas em diversos fatores de mercado.
+          </p>
+
+          <h2 className="text-2xl font-bold mt-12 mb-4 text-gray-900 dark:text-white">2. Metodologia e Processamento de Dados</h2>
+          <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-8">
+            Os dados base foram processados utilizando Python e a biblioteca Pandas. Uma etapa crítica foi a normalização monetária, convertendo todos os salários para USD (Dólar Americano), permitindo uma base de comparação uniforme entre diferentes regiões geográficas. O conjunto de dados final (<code>dados-imersao-final.csv</code>) alimenta a aplicação de forma dinâmica.
+          </p>
+
+          <h2 className="text-2xl font-bold mt-12 mb-4 text-gray-900 dark:text-white">3. Stack Tecnológica e Ferramentas</h2>
+          <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-4">
+            A solução foi construída utilizando a seguinte stack:
+          </p>
+          <ul className="list-disc pl-6 text-gray-600 dark:text-gray-400 space-y-2 mb-8">
+            <li><strong>Python:</strong> Linguagem base para processamento de dados.</li>
+            <li><strong>Pandas:</strong> Manipulação e limpeza dos dados salariais.</li>
+            <li><strong>Plotly Express:</strong> Geração de gráficos interativos e mapas globais.</li>
+            <li><strong>Streamlit:</strong> Framework para a criação da interface web e deploy da aplicação.</li>
+          </ul>
+
+          <h2 className="text-2xl font-bold mt-12 mb-4 text-gray-900 dark:text-white">4. Funcionalidades e Análise Interativa</h2>
+          <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-4">
+            O dashboard oferece ao usuário a capacidade de filtrar informações por Ano, Senioridade, Tipo de Contrato e Tamanho da Empresa, gerando visualizações personalizadas:
+          </p>
+          <ul className="list-disc pl-6 text-gray-600 dark:text-gray-400 space-y-2 mb-8">
+            <li><strong>Métricas de Desempenho (KPIs):</strong> Salário médio, máximo e cargo com maior volume de dados.</li>
+            <li><strong>Análise por Cargo:</strong> Ranking das 10 maiores médias salariais.</li>
+            <li><strong>Distribuição Salarial:</strong> Histograma de concentração de rendimentos anuais.</li>
+            <li><strong>Modelos de Trabalho:</strong> Proporção entre regime remoto, presencial ou híbrido.</li>
+          </ul>
+
+          <h2 className="text-2xl font-bold mt-16 mb-4 text-gray-900 dark:text-white">5. Aplicação Interativa (Demonstração Live)</h2>
+          <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-8">
+            Navegue pelo dashboard interativo abaixo para explorar os resultados da análise e testar os filtros em tempo real. Você pode interagir com os gráficos e obter insights sobre diferentes segmentos do mercado de dados global!
+          </p>
+
+          <div className="w-full overflow-hidden rounded-xl border border-gray-100 bg-white p-2 shadow-lg dark:border-gray-800 dark:bg-gray-900">
+            <iframe
+              src="https://degan-imersao-dados-alura.streamlit.app/?embed=true"
+              className="w-full aspect-[16/10]"
+              style={{ border: '1px solid #ddd', borderRadius: '8px', boxShadow: '0 2px 8px rgba(0,0,0,0.05)' }}
+              loading="lazy"
+              title="Dashboard de Salários Dados 2026"
+            ></iframe>
+          </div>
+        </motion.div>
       </div>
     );
   }

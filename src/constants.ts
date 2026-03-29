@@ -1,6 +1,7 @@
 import { Project, SocialLinks } from './types';
 import cardmmm from './images/cardmmm.png';
 import construcao from './images/construcao.jpg';
+import projetostreamlit from './images/projetostreamlit.png';
 
 export const SOCIAL_LINKS: SocialLinks = {
   github: 'Https://github.com/DiegoDegan',
@@ -22,14 +23,15 @@ export const PROJECTS: Project[] = [
     date: 'Mar 2024',
   },
   {
-    id: 'em-construcao-1',
-    title: 'EM CONSTRUÇÃO',
-    description: 'Este projeto está sendo desenvolvido e em breve estará disponível.',
-    longDescription: 'Em breve trarei detalhes sobre este novo projeto de Ciência de Dados. Fique atento!',
-    tags: ['Em breve'],
-    imageUrl: construcao,
-    githubUrl: '',
-    date: '-',
+    id: 'analise-de-salarios-streamlit',
+    title: 'Análise de Salários na Área de Dados',
+    description: 'Dashboard interativo criado para analisar dados salariais globais na área de tecnologia.',
+    longDescription: 'Este projeto consiste no desenvolvimento de um dashboard interativo criado durante a Imersão Dados da Alura.',
+    tags: ['Python', 'Pandas', 'Streamlit', 'Plotly'],
+    imageUrl: projetostreamlit,
+    githubUrl: 'https://github.com/DiegoDegan',
+    demoUrl: 'https://degan-imersao-dados-alura.streamlit.app/?embed=true',
+    date: '2026',
   },
   {
     id: 'em-construcao-2',
