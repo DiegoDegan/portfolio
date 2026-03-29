@@ -20,14 +20,14 @@ import {
 import heatmapImg from '../images/heatmap.png';
 import regplotImg from '../images/regplot.png';
 import modelPerfImg from '../images/model_performance.png';
-import impactoImg from '../images/impacto.png';
 import whatifImg from '../images/whatif.png';
+import shapiroImg from '../images/shapiro.png';
 
 export default function ProjectDetail() {
   const { id } = useParams();
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState<'stack' | 'metodologia'>('stack');
-  const [isAccordionOpen, setIsAccordionOpen] = useState({ stack: true, metodologia: false });
+  const [isAccordionOpen, setIsAccordionOpen] = useState({ stack: false, metodologia: false });
 
   const project = PROJECTS.find((p) => p.id === id);
 
@@ -67,9 +67,11 @@ export default function ProjectDetail() {
             <span className="rounded-full bg-emerald-100 px-3 py-1 text-xs font-bold text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400">Data Science</span>
             <span className="rounded-full bg-blue-100 px-3 py-1 text-xs font-bold text-blue-700 dark:bg-blue-900/30 dark:text-blue-400">Marketing Analytics</span>
             <span className="rounded-full bg-purple-100 px-3 py-1 text-xs font-bold text-purple-700 dark:bg-purple-900/30 dark:text-purple-400">ROI Optimization</span>
+            <span className="rounded-full bg-orange-100 px-3 py-1 text-xs font-bold text-orange-700 dark:bg-orange-900/30 dark:text-orange-400">Statistical Testing</span>
+            <span className="rounded-full bg-pink-100 px-3 py-1 text-xs font-bold text-pink-700 dark:bg-pink-900/30 dark:text-pink-400">SciPy</span>
           </div>
           <h1 className="mb-6 text-4xl font-bold leading-tight md:text-6xl">
-            Otimização de Mix de Marketing com Regressão Linear
+            Otimização de Mix de Marketing com Regressão Linear (v1)
           </h1>
           <p className="mx-auto max-w-3xl text-xl text-gray-600 dark:text-gray-400 lg:mx-0">
             Como uma realocação estratégica de budget projetou um aumento de <span className="font-bold text-emerald-600 dark:text-emerald-400">25.8%</span> no faturamento anual.
@@ -114,128 +116,153 @@ export default function ProjectDetail() {
 
         {/* 3. Narrative (Z-Layout) */}
         <div className="space-y-32">
-          {/* O Problema */}
+          {/* 1. O Diagnóstico */}
           <section className="grid items-center gap-12 lg:grid-cols-2">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-            >
-              <div className="mb-4 flex items-center gap-2 text-brand-dark dark:text-white">
-                <Target size={24} />
-                <h2 className="text-2xl font-bold">O Problema</h2>
-              </div>
-              <p className="text-lg leading-relaxed text-gray-600 dark:text-gray-400">
-                A análise inicial revelou uma ineficiência crítica no canal <strong>"Newspaper"</strong>.
-                Ao analisar o heatmap de correlação, percebemos que o investimento neste canal não refletia
-                um aumento proporcional nas vendas, indicando um alto custo de aquisição e baixo retorno real.
-              </p>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              className="w-3/4 mx-auto overflow-hidden rounded-2xl shadow-lg border border-gray-100 dark:border-gray-800"
-            >
-              <img src={heatmapImg} alt="Heatmap de Correlação" className="w-full h-auto" />
-              <p className="mt-2 text-center text-xs text-gray-400 italic">Análise de Correlação: Variáveis de Investimento vs. Vendas</p>
-            </motion.div>
-          </section>
-
-          {/* A Solução */}
-          <section className="grid items-center gap-12 lg:grid-cols-2">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              className="order-2 overflow-hidden rounded-2xl shadow-lg border border-gray-100 dark:border-gray-800 lg:order-1 scale-115 origin-center"
-            >
-              <img src={regplotImg} alt="Regressão Linear" className="w-full h-auto" />
-              <p className="mt-2 text-center text-xs text-gray-400 italic">Regplot: Linha de Tendência e Dispersão dos Dados</p>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="order-1 lg:order-2"
-            >
-              <div className="mb-4 flex items-center gap-2 text-brand-dark dark:text-white">
-                <Lightbulb size={24} />
-                <h2 className="text-2xl font-bold">A Solução</h2>
-              </div>
-              <p className="text-lg leading-relaxed text-gray-600 dark:text-gray-400">
-                Utilizamos o <strong>Regplot</strong> para visualizar a força da relação linear entre cada canal e as vendas.
-                Isso confirmou estatisticamente quais mídias eram mais elásticas e quais estavam saturadas.
-                A modelagem permitiu uma visão clara de onde cada real investido trazia o maior retorno marginal.
-              </p>
-            </motion.div>
-          </section>
-
-          {/* Performance do Modelo */}
-          <section className="grid items-center gap-12 lg:grid-cols-2">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-            >
-              <div className="mb-4 flex items-center gap-2 text-brand-dark dark:text-white">
-                <Zap size={24} />
-                <h2 className="text-2xl font-bold">Performance & Impacto</h2>
-              </div>
-              <p className="text-lg leading-relaxed text-gray-600 dark:text-gray-400">
-                O modelo alcançou uma precisão excelente, validada pela métrica <strong>R² de 0.93</strong>.
-                A análise de importância das features (Impacto) mostrou que a TV e o Rádio eram os principais drivers
-                de conversão, enquanto o Jornal tinha um peso quase irrelevante na decisão de compra do cliente.
-              </p>
-            </motion.div>
             <div className="grid gap-4">
               <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                className="w-5/6 mx-auto overflow-hidden rounded-2xl shadow-md border border-gray-100 dark:border-gray-800"
+                className="w-3/4 mx-auto overflow-hidden rounded-2xl shadow-lg border border-gray-100 bg-white p-2 dark:border-gray-800 dark:bg-gray-900"
               >
-                <img src={modelPerfImg} alt="Performance do Modelo" className="w-full h-auto" />
+                <img src={heatmapImg} alt="Heatmap de Correlação" className="w-full h-auto rounded-xl" />
               </motion.div>
               <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.2 }}
-                className="w-5/6 mx-auto overflow-hidden rounded-2xl shadow-md border border-gray-100 dark:border-gray-800"
+                className="w-full overflow-hidden rounded-2xl shadow-lg border border-gray-100 bg-white p-2 dark:border-gray-800 dark:bg-gray-900"
               >
-                <img src={impactoImg} alt="Importância das Variáveis" className="w-full h-auto" />
+                <img src={regplotImg} alt="Regressão Linear" className="w-full h-auto rounded-xl" />
+              </motion.div>
+            </div>
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+            >
+              <div className="mb-4 flex items-center gap-2 text-brand-dark dark:text-white">
+                <Target size={24} />
+                <h2 className="text-2xl font-bold">A Solução</h2>
+              </div>
+              <p className="text-lg leading-relaxed text-gray-600 dark:text-gray-400">
+                Utilizei o Regplot e a Matriz de Correlação para visualizar a força da relação linear entre cada canal e as vendas. A modelagem linear serviu como um diagnóstico inicial de elasticidade, sinalizando matematicamente onde cada real investido trazia o maior retorno marginal. Identificou-se uma altíssima correlação de vendas na TV e Rádio, enquanto o canal Jornal (Newspaper) apresentou impacto quase nulo e alto grau de incerteza de retorno.
+              </p>
+            </motion.div>
+          </section>
+
+          {/* 2. Performance & Impacto */}
+          <section className="grid items-center gap-12 lg:grid-cols-2">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="order-2 lg:order-1"
+            >
+              <div className="mb-4 flex items-center gap-2 text-brand-dark dark:text-white">
+                <Zap size={24} />
+                <h2 className="text-2xl font-bold">Performance e Impacto de Negócio</h2>
+              </div>
+              <p className="text-lg leading-relaxed text-gray-600 dark:text-gray-400">
+                O algoritmo alcançou uma precisão excelente (93%) validada pela métrica de R² no dataset de teste. Ao extrair os coeficientes, elaboramos uma simulação hipotética ("What-If") realocando todo o capital ineficiente (Jornal) dividindo-o entre a TV e a Rádio. O cenário projetou um Faturamento Otimizado de $17.43M, representando um incremento líquido de $3.58M sem necessidade de aumentar em um único centavo o orçamento total de publicidade.
+              </p>
+            </motion.div>
+            <div className="grid gap-4 order-1 lg:order-2">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                className="w-3/4 mx-auto overflow-hidden rounded-2xl shadow-md border border-gray-100 bg-white p-2 dark:border-gray-800 dark:bg-gray-900"
+              >
+                <img src={modelPerfImg} alt="Real vs Previsto" className="w-full h-auto rounded-xl" />
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2 }}
+                className="w-3/4 mx-auto overflow-hidden rounded-2xl shadow-md border border-gray-100 bg-white p-2 dark:border-gray-800 dark:bg-gray-900"
+              >
+                <img src={whatifImg} alt="Cenário Otimizado" className="w-full h-auto rounded-xl" />
               </motion.div>
             </div>
           </section>
 
-          {/* A Recomendação */}
+          {/* 3. Validação Estatística */}
           <section className="grid items-center gap-12 lg:grid-cols-2">
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              className="order-2 w-3/4 mx-auto overflow-hidden rounded-2xl shadow-lg border border-gray-100 dark:border-gray-800 lg:order-1"
+              className="w-full overflow-hidden rounded-2xl shadow-lg border border-gray-100 bg-white p-2 dark:border-gray-800 dark:bg-gray-900"
             >
-              <img src={whatifImg} alt="Análise What-If" className="w-full h-auto" />
-              <p className="mt-2 text-center text-xs text-gray-400 italic">Simulação: Previsão de Vendas em Cenários de Investimento</p>
+              <img src={shapiroImg} alt="Teste de Shapiro-Wilk" className="w-full h-auto rounded-xl" />
             </motion.div>
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="order-1 lg:order-2"
             >
               <div className="mb-4 flex items-center gap-2 text-brand-dark dark:text-white">
                 <BarChart3 size={24} />
-                <h2 className="text-2xl font-bold">A Recomendação</h2>
+                <h2 className="text-2xl font-bold">Rigor Metodológico e Limitações</h2>
               </div>
               <p className="text-lg leading-relaxed text-gray-600 dark:text-gray-400">
-                A aplicação da técnica <strong>"What-if"</strong> permitiu simular diferentes cenários.
-                A recomendação final foi zerar o investimento em Jornal e realocá-lo proporcionalmente
-                entre TV e Rádio, o que projetou um faturamento anual recorde sem necessidade de aporte extra.
+                Modelos excessivamente perfeitos exigem auditoria matemática. Para garantir a confiabilidade na escolha dos canais e atestar a robustez do Teste-t dos coeficientes, os resíduos da regressão foram validados estatisticamente através do Teste de Shapiro-Wilk. A identificação formal de uma "Não-Normalidade" (p-valor &lt; 0.05) provou que as vendas possuem comportamentos logarítmicos e retornos decrescentes (saturação de mercado de anúncios) que a Regressão Linear Múltipla clássica assume ser sempre constante e infinita.
               </p>
             </motion.div>
+          </section>
+
+          {/* 4. Roadmap V2 */}
+          <section className="mt-20">
+            <div className="mb-12 text-center">
+              <h2 className="mb-4 text-3xl font-bold">Planejamento e Estratégia V2</h2>
+              <p className="mx-auto max-w-3xl text-lg text-gray-600 dark:text-gray-400">
+                Ciente das fraquezas da regressão clássica, o Roadmap técnico para a evolução do modelo (V2) foca na quebra da arquitetura atual para absolver o padrão global das Big Techs no gerenciamento de Marketing Analytics:
+              </p>
+            </div>
+
+            <div className="grid gap-6 md:grid-cols-3">
+              <motion.div
+                whileHover={{ y: -5 }}
+                className="flex flex-col gap-4 rounded-2xl border border-gray-200 bg-white/50 p-8 shadow-sm backdrop-blur-sm dark:border-gray-800 dark:bg-gray-900/50"
+              >
+                <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-indigo-100 text-indigo-600 dark:bg-indigo-900/40 dark:text-indigo-400">
+                  <Calendar size={28} />
+                </div>
+                <h3 className="text-xl font-bold">Timeseries & Adstock</h3>
+                <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+                  Transição para um formato cronológico buscando mensurar o Efeito Memória da propaganda no tempo (Decaimento Exponencial).
+                </p>
+              </motion.div>
+
+              <motion.div
+                whileHover={{ y: -5 }}
+                className="flex flex-col gap-4 rounded-2xl border border-gray-200 bg-white/50 p-8 shadow-sm backdrop-blur-sm dark:border-gray-800 dark:bg-gray-900/50"
+              >
+                <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-rose-100 text-rose-600 dark:bg-rose-900/40 dark:text-rose-400">
+                  <TrendingUp size={28} />
+                </div>
+                <h3 className="text-xl font-bold">Efeito Saturação</h3>
+                <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+                  Transformações Logarítmicas ou curvas de <em>Hill</em> na entrada de dados para ensinar o algoritmo sobre os retornos decrescentes matemáticos.
+                </p>
+              </motion.div>
+
+              <motion.div
+                whileHover={{ y: -5 }}
+                className="flex flex-col gap-4 rounded-2xl border border-gray-200 bg-white/50 p-8 shadow-sm backdrop-blur-sm dark:border-gray-800 dark:bg-gray-900/50"
+              >
+                <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-amber-100 text-amber-600 dark:bg-amber-900/40 dark:text-amber-400">
+                  <Zap size={28} />
+                </div>
+                <h3 className="text-xl font-bold">Inferência Bayesiana</h3>
+                <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+                  Substituição do modelo Scikit-Learn por regularizações robustas ou abordagem Probabilística/Bayesiana (PyMC) focada em limites otimizados unindo <em>Scipy.Optimize</em>.
+                </p>
+              </motion.div>
+            </div>
           </section>
         </div>
 
@@ -330,9 +357,9 @@ export default function ProjectDetail() {
         <section className="mt-24 border-t border-gray-100 pt-16 dark:border-gray-800">
           <div className="mx-auto max-w-3xl text-center">
             <p className="mb-6 text-2xl font-serif italic text-gray-700 dark:text-gray-300">
-              "Como especialista com 15 anos em operações, entendo que dados sem ação são apenas números.
+              Como especialista com 15 anos em operações, entendo que dados sem ação são apenas números.
               Este modelo foi construído não apenas para prever vendas, mas para servir como uma ferramenta
-              de decisão para diretores de marketing que precisam justificar cada real investido."
+              de decisão para diretores de marketing que precisam justificar cada real investido.
             </p>
             <div className="font-bold">— Diego Degan</div>
           </div>

@@ -19,7 +19,7 @@ export default function Home() {
               transition={{ duration: 0.6 }}
             >
               <h1 className="mb-6 text-5xl font-bold leading-tight md:text-6xl">
-                Olá, eu sou um <span className="text-gray-500 italic">Profissional Full Stack em Dados</span>, focado em resultados.
+                Olá, eu sou um <span className="text-gray-500 italic">Profissional Full Stack em Dados em formação</span>, focado em resultados.
               </h1>
               <p className="mb-8 text-lg text-gray-600 dark:text-gray-400">
                 Transformo dados complexos em insights acionáveis e modelos preditivos de alto impacto.
