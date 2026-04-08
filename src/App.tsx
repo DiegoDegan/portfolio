@@ -7,6 +7,7 @@ import Home from './pages/Home';
 import Bio from './pages/Bio';
 import Projects from './pages/Projects';
 import ProjectDetail from './pages/ProjectDetail';
+import ArtigoAntigravity from './pages/ArtigoAntigravity';
 
 function PageTransition({ children }: { children: React.ReactNode }) {
   const location = useLocation();
@@ -37,6 +38,7 @@ export default function App() {
               <Route path="/bio" element={<Bio />} />
               <Route path="/projetos" element={<Projects />} />
               <Route path="/projeto/:id" element={<ProjectDetail />} />
+              <Route path="/artigos" element={<ArtigoAntigravity />} />
             </Routes>
           </PageTransition>
         </main>

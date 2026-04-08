@@ -38,6 +38,7 @@ export default function Header() {
     { name: 'Home', path: '/' },
     { name: 'Bio', path: '/bio' },
     { name: 'Projetos', path: '/projetos' },
+    { name: 'Artigos', path: '/artigos' },
   ];
 
   return (

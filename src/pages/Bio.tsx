@@ -25,8 +25,8 @@ export default function Bio() {
 
   const itemVariants = {
     hidden: { opacity: 0, y: 16 },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       y: 0,
       transition: { duration: 0.4, ease: "easeOut" }
     }
@@ -46,19 +46,19 @@ export default function Bio() {
           <p className="text-sm font-medium text-gray-500 dark:text-gray-400">
             São Paulo, Brasil · Ciência de Dados
           </p>
-          
+
           {/* Pill Buttons */}
           <div className="mt-6 flex flex-wrap justify-center gap-3">
-            <a 
-              href={SOCIAL_LINKS.linkedin} 
-              target="_blank" 
+            <a
+              href={SOCIAL_LINKS.linkedin}
+              target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 rounded-full border border-gray-800 bg-gray-900 px-4 py-2 text-xs font-bold text-gray-300 transition-all hover:border-white hover:bg-gray-800"
             >
               <Linkedin size={14} />
               LinkedIn
             </a>
-            <a 
+            <a
               href={`mailto:${SOCIAL_LINKS.email}`}
               className="flex items-center gap-2 rounded-full border border-gray-800 bg-gray-900 px-4 py-2 text-xs font-bold text-gray-300 transition-all hover:border-white hover:bg-gray-800"
             >
@@ -74,14 +74,14 @@ export default function Bio() {
 
         {/* Main Content Card */}
         <div className="overflow-hidden rounded-2xl border border-gray-100 bg-gray-900 p-8 shadow-xl dark:border-gray-800 sm:p-12">
-          <motion.div 
+          <motion.div
             variants={containerVariants}
             initial="hidden"
             animate="visible"
             className="space-y-8"
           >
             {paragraphs.map((content, index) => (
-              <motion.p 
+              <motion.p
                 key={index}
                 variants={itemVariants}
                 className="text-lg leading-relaxed text-gray-400 md:text-xl font-light"
@@ -91,7 +91,7 @@ export default function Bio() {
             ))}
 
             {/* Signature Section */}
-            <motion.div 
+            <motion.div
               variants={itemVariants}
               className="mt-16 flex flex-col items-end"
             >
@@ -99,13 +99,13 @@ export default function Bio() {
               <p className="font-serif text-3xl italic text-gray-300">
                 Diego Degan
               </p>
-              
+
             </motion.div>
           </motion.div>
         </div>
 
         {/* Bottom Decoration */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.2 }}
