@@ -60,19 +60,56 @@ function ContextTactic({ emoji, title, desc }: { emoji: string; title: string; d
   );
 }
 
+const colorVariants = {
+  indigo: {
+    card: "bg-indigo-900/30 border-indigo-500/50",
+    badge: "bg-indigo-500 shadow-lg shadow-indigo-500/30",
+    title: "text-indigo-300",
+  },
+  cyan: {
+    card: "bg-cyan-900/30 border-cyan-500/50",
+    badge: "bg-cyan-500 shadow-lg shadow-cyan-500/30",
+    title: "text-cyan-300",
+  },
+  emerald: {
+    card: "bg-emerald-900/30 border-emerald-500/50",
+    badge: "bg-emerald-500 shadow-lg shadow-emerald-500/30",
+    title: "text-emerald-300",
+  },
+  purple: {
+    card: "bg-purple-900/30 border-purple-500/50",
+    badge: "bg-purple-500 shadow-lg shadow-purple-500/30",
+    title: "text-purple-300",
+  },
+} as const;
+
+type PipelineColor = keyof typeof colorVariants;
+
 function PipelineStep({
-  step, title, desc, color,
+  step,
+  title,
+  desc,
+  color,
 }: {
-  step: number; title: string; desc: string; color: string;
+  step: number;
+  title: string;
+  desc: string;
+  color: PipelineColor;
 }) {
-  const c = color; // indigo | cyan | emerald | purple
+  const styles = colorVariants[color];
+
   return (
-    <div className={`flex-1 rounded-xl border bg-${c}-900/30 border-${c}-500/50 p-6 text-center w-full`}>
-      <div className={`mx-auto mb-3 flex h-10 w-10 items-center justify-center rounded-full bg-${c}-500 text-xl font-bold text-white shadow-lg shadow-${c}-500/30`}>
+    <div className={`flex-1 rounded-xl border p-6 text-center w-full ${styles.card}`}>
+      <div
+        className={`mx-auto mb-3 flex h-10 w-10 items-center justify-center rounded-full text-xl font-bold text-white ${styles.badge}`}
+      >
         {step}
       </div>
-      <h3 className={`text-lg font-bold text-${c}-300`}>{title}</h3>
-      <p className="mt-2 text-xs text-slate-400" dangerouslySetInnerHTML={{ __html: desc }} />
+      <h3 className={`text-lg font-bold ${styles.title}`}>{title}</h3>
+      <p
+        className="mt-2 text-xs text-slate-400"
+        dangerouslySetInnerHTML={{ __html: desc }}
+      />
     </div>
   );
 }
@@ -418,6 +455,32 @@ export default function ArtigoAntigravity() {
                 Impacto do Checklist na Redução de Retrabalho (Baseado em pesquisas de economia de tokens)
               </p>
             </div>
+          </div>
+        </motion.section>
+        {/* ─ Section 6: Presentation Slides ─ */}
+        <motion.section
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.6 }}
+          className="glass-panel col-span-1 overflow-hidden rounded-2xl p-0 shadow-2xl lg:col-span-2"
+        >
+          <div className="flex items-center justify-between bg-slate-800/50 p-6">
+            <h2 className="flex items-center gap-3 text-2xl font-bold text-white">
+              <span className="text-cyan-400" aria-hidden="true">📊</span>
+              Apresentação Executiva: Economia de Tokens no Antigravity
+            </h2>
+          </div>
+          <div className="relative aspect-video w-full overflow-hidden bg-slate-900">
+            <iframe
+              src="https://docs.google.com/presentation/d/e/2PACX-1vRrCT4Vr50CG1kM8HTGqP6qoEI1uh3ZaoUz2ztQJSBURlVTqyf0J3kFM4UILlE3vpQ1VFqLKFCgpCKK/pubembed?start=false&loop=false&delayms=3000"
+              frameBorder="0"
+              width="100%"
+              height="100%"
+              allowFullScreen
+              title="Apresentação Antigravity"
+              className="absolute inset-0 h-full w-full border-none"
+            />
           </div>
         </motion.section>
       </main>
