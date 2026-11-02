@@ -5,8 +5,11 @@ export interface Project {
   longDescription: string;
   tags: string[];
   imageUrl: string;
+  imageFit?: 'cover' | 'contain';
+  highlightBadge?: string;
   githubUrl?: string;
   demoUrl?: string;
+  youtubeUrl?: string;
   date: string;
 }
 

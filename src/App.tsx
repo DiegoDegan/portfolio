@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'motion/react';
 import Header from './components/Header';
@@ -7,7 +7,16 @@ import Home from './pages/Home';
 import Bio from './pages/Bio';
 import Projects from './pages/Projects';
 import ProjectDetail from './pages/ProjectDetail';
-import ArtigoAntigravity from './pages/ArtigoAntigravity';
+
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+}
 
 function PageTransition({ children }: { children: React.ReactNode }) {
   const location = useLocation();
@@ -29,7 +38,8 @@ function PageTransition({ children }: { children: React.ReactNode }) {
 export default function App() {
   return (
     <Router>
-      <div className="flex min-h-screen flex-col bg-white text-gray-900 transition-colors duration-300 dark:bg-brand-dark dark:text-gray-100">
+      <ScrollToTop />
+      <div className="flex min-h-screen flex-col bg-slate-50 text-slate-900 transition-colors duration-300 dark:bg-brand-dark dark:text-slate-100">
         <Header />
         <main className="flex-grow">
           <PageTransition>
@@ -38,7 +48,6 @@ export default function App() {
               <Route path="/bio" element={<Bio />} />
               <Route path="/projetos" element={<Projects />} />
               <Route path="/projeto/:id" element={<ProjectDetail />} />
-              <Route path="/artigos" element={<ArtigoAntigravity />} />
             </Routes>
           </PageTransition>
         </main>
